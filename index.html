@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="form.css" />
+    <title>Registration Form</title>
+  </head>
+  <body>
+    <form onsubmit="return validation()">
+      <table class="table" border="5">
+        <tr>
+          <td colspan="2" align="center">
+            <h3><font color="blue">Registration Form</font></h3>
+          </td>
+        </tr>
+        <tr>
+          <td>Enter Name:</td>
+          <td>
+            <input type="text" name="name" id="name" /><span id="s1"></span>
+          </td>
+        </tr>
+
+        <tr>
+          <td>Enter Address1:</td>
+          <td>
+            <input type="text" name="address1" id="address1" /><span
+              id="s2"
+            ></span>
+          </td>
+        </tr>
+
+        <tr>
+          <td>Enter Address2:</td>
+          <td>
+            <textarea name="address2" id="address2"></textarea
+            ><span id="s3"></span>
+          </td>
+        </tr>
+
+        <tr>
+          <td>Enter Email:</td>
+          <td>
+            <input
+              type="email"
+              name="email"
+              id="email"
+              pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"
+            /><span id="s4"></span>
+          </td>
+        </tr>
+
+        <tr>
+          <td>Enter Password:</td>
+          <td>
+            <input type="password" name="password" id="password" /><span
+              id="s5"
+            ></span>
+          </td>
+        </tr>
+
+        <tr>
+          <td>Enter DOB:</td>
+          <td><input type="date" name="dob" /></td>
+        </tr>
+
+        <tr>
+          <td>Enter Phone No.:</td>
+          <td>
+            <input type="number" name="phone" id="phone" /><span id="s6"></span>
+          </td>
+        </tr>
+
+        <tr>
+          <td>enter Gender:</td>
+          <td>
+            <input type="radio" name="gender" value="male" /> Male
+            <input type="radio" name="gender" value="female" /> Female
+            <input type="radio" name="gender" value="others" /> Others
+          </td>
+        </tr>
+
+        <tr>
+          <td>Degree:</td>
+          <td>
+            <select name="degree">
+              <option>Select</option>
+              <option value="B.Tech">B.Tech</option>
+              <option value="M.Tech">M.Tech</option>
+              <option value="B.Sc">B.Sc</option>
+              <option value="B.A">B.A</option>
+            </select>
+          </td>
+        </tr>
+
+        <tr>
+          <td>Language:</td>
+          <td>
+            <input type="checkbox" name="language[]" value="hindi" />Hindi
+            <input type="checkbox" name="language[]" value="english" />English
+            <input type="checkbox" name="language[]" value="bengali" />Bengali
+          </td>
+        </tr>
+
+        <tr>
+          <td>Enter Image:</td>
+          <td><input type="file" name="uploadimage" /></td>
+        </tr>
+
+        <tr>
+          <td colspan="2" align="center">
+            <input type="submit" name="Submit" />
+            <input type="reset" name="Reset" />
+          </td>
+        </tr>
+        <tr></tr>
+      </table>
+    </form>
+
+    <script>
+      function validation() {
+        // Name Validation
+
+        a = document.getElementById("name").value;
+        if (a == "") {
+          document.getElementById("s1").innerHTML = "** Please enter name";
+          document.getElementById("s1").style.color = "red";
+          return false;
+        }
+        if (a.length <= 2 || a.length > 20) {
+          document.getElementById("s1").innerHTML =
+            "** Name must be between 2 to 20";
+          document.getElementById("s1").style.color = "red";
+          return false;
+        }
+
+        // Address1 Validation
+
+        b = document.getElementById("address1").value;
+        if (b == "") {
+          document.getElementById("s2").innerHTML = "** Please enter address1";
+          document.getElementById("s2").style.color = "red";
+          return false;
+        }
+        if (b.length <= 2 || b.length > 30) {
+          document.getElementById("s2").innerHTML =
+            "** Address1 must be between 2 to 30";
+          document.getElementById("s2").style.color = "red";
+          return false;
+        }
+
+        // Address2 Validation
+
+        c = document.getElementById("address2").value;
+        if (c == "") {
+          document.getElementById("s3").innerHTML = "** Please enter address2";
+          document.getElementById("s3").style.color = "red";
+          return false;
+        }
+        if (c.length <= 2 || c.length > 40) {
+          document.getElementById("s3").innerHTML =
+            "** Address2 must be between 2 to 40";
+          document.getElementById("s3").style.color = "red";
+          return false;
+        }
+
+        // Email Validation
+
+        d = document.getElementById("email").pattern;
+        document.getElementById("s4").innerHTML = d;
+
+        // Password Validation
+
+        e = document.getElementById("password").value;
+        if (e == "") {
+          document.getElementById("s5").innerHTML = "** Please enter password";
+          document.getElementById("s5").style.color = "red";
+          return false;
+        }
+        if (e.length < 8) {
+          document.getElementById("s5").innerHTML =
+            "** Please enter 8 digit password";
+          document.getElementById("s5").style.color = "red";
+          return false;
+        }
+        if (e.search(/[A-Z]/) == -1) {
+          document.getElementById("s5").innerHTML =
+            "** Please enter min one upper case";
+          document.getElementById("s5").style.color = "red";
+          return false;
+        }
+        if (e.search(/[a-z]/) == -1) {
+          document.getElementById("s5").innerHTML =
+            "** Please enter min one lower case";
+          document.getElementById("s5").style.color = "red";
+          return false;
+        }
+        if (e.search(/[1-9]/) == -1) {
+          document.getElementById("s5").innerHTML =
+            "** Please enter min one numeric value";
+          document.getElementById("s5").style.color = "red";
+          return false;
+        }
+        if (e.search(/[@#$&%]/) == -1) {
+          document.getElementById("s5").innerHTML =
+            "** Please enter min one special char";
+          document.getElementById("s5").style.color = "red";
+          return false;
+        } else {
+          document.getElementById("s5").innerHTML = "** Successful";
+          document.getElementById("s5").style.color = "green";
+          return false;
+        }
+
+        // Mobile validation
+
+        f = document.getElementById("phone").value;
+        if (f == "") {
+          document.getElementById("s6").innerHTML = "** Please enter phone no";
+          document.getElementById("s6").style.color = "red";
+          return false;
+        }
+        if (f.length < 10) {
+          document.getElementById("s6").innerHTML =
+            "** Please enter 10 digit phone no";
+          document.getElementById("s6").style.color = "red";
+          return false;
+        }
+        if (f.length > 10) {
+          document.getElementById("s6").innerHTML =
+            "** Please enter 10 digit phone no";
+          document.getElementById("s6").style.color = "red";
+          return false;
+        }
+        if (isNaN(f)) {
+          document.getElementById("s6").innerHTML =
+            "** Please enter only number";
+          document.getElementById("s6").style.color = "red";
+          return false;
+        }
+        if (f.charAt(0) != 9 && f.charAt(0) != 8) {
+          document.getElementById("s6").innerHTML =
+            "** Please enter correct number";
+          document.getElementById("s6").style.color = "red";
+          return false;
+        }
+      }
+    </script>
+  </body>
+</html>
